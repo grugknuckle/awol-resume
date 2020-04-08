@@ -68,12 +68,12 @@ export default {
           title: 'SOCIALS',
           items: [
             {
-              icon: 'mdi-github-circle',
+              icon: 'mdi-github',
               text: 'github.com/grugknuckle',
               link: 'https://github.com/grugknuckle'
             },
             {
-              icon: 'mdi-linkedin-box',
+              icon: 'mdi-linkedin',
               text: 'linkedin.com/in/aaron-wolbach',
               link: 'https://www.linkedin.com/in/aaron-wolbach-883827179/'
             },
