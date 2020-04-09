@@ -5,10 +5,8 @@ import store from './store'
 import vuetify from '@/plugins/vuetify'
 import helpers from '@/plugins/helper'
 // import '@/components'
-import VueParticles from 'vue-particles'
 
 Vue.use(helpers)
-Vue.use(VueParticles)
 Vue.config.errorHandler = function (err, vm, info) {
   console.error(err)
   console.log(info)
