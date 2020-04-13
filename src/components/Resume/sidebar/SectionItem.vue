@@ -16,7 +16,12 @@
 <script>
 export default {
   name: "SidebarSectionItem",
-  props: { item: { type: Object, default: () => {} } },
+  props: {
+    item: {
+      type: Object,
+      default: () => {}
+    }
+  },
   computed: {
     hasIcon() {
       return !!this.item.icon;

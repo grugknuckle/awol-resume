@@ -1,5 +1,5 @@
 <template>
-  <v-card color="grey darken-3" dark>
+  <v-card color="grey darken-3" dark ma-2>
     <v-card-text>
       <avatar />
       <div class="text-sm-center mb-4 mt-3">
@@ -68,7 +68,7 @@ export default {
           title: 'SOCIALS',
           items: [
             {
-              icon: 'mdi-github',
+              icon: 'md-github',
               text: 'github.com/grugknuckle',
               link: 'https://github.com/grugknuckle'
             },
@@ -118,7 +118,7 @@ export default {
             },
             {
               icon: 'mdi-android-debug-bridge',
-              text: 'Tickling Bugs!'
+              text: 'Squashing Bugs!'
             }
           ]
         }

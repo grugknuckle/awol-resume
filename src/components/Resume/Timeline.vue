@@ -1,5 +1,5 @@
 <template>
-	<v-card color="grey lighten-4" light>
+	<v-card color="grey lighten-4" light mt-2>
 		<v-card-text>
 			<content-section id="timeline" title="Software Experience">
 				<template slot="actions">

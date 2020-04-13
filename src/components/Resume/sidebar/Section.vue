@@ -19,7 +19,12 @@ import SidebarSectionItem from '@/components/Resume/sidebar/SectionItem'
 export default {
   name: 'SidebarSection',
   components: { SidebarSectionItem },
-  props: { options: { type: Object, default: () => {} } }
+  props: {
+    options: {
+      type: Object,
+      default: () => {}
+    }
+  }
 }
 </script>
 

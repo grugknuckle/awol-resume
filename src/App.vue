@@ -3,7 +3,7 @@
 		<navigation></navigation>
 		
 		<particles-bg type="cobweb" :canvas="{backgroundColor:'#888'}" :bg="true"/>
-		<!-- <particles-bg type="cobweb" :canvas="{backgroundColor:'#81D4FA'}" :bg="true"/> -->
+
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-content>		
         <router-view></router-view>
@@ -31,11 +31,8 @@ export default {
 		titleTemplate: 'Aaron Wolbach | %s'
 	},
 	data() {
-		return {
-			background: require('./assets/dark-background-2.jpg'),
-		}
-	},
-	methods: {}
+		return {}
+	}
 }
 </script>
 

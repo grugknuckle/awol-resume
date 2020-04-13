@@ -36,14 +36,9 @@ export default {
 		drawer: true,
 		routes: [
 			{ title: 'Home', icon: 'mdi-home', to: '/' }
-		]
+		],
+		logo: require('../assets/logo-2.png')
 	}),
-	computed: {
-		logo() {
-      return require('../assets/logo-2.png')
-      // return require('../assets/logo.svg')
-		}
-	},
 	methods: {}
 }
 </script>

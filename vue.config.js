@@ -2,8 +2,8 @@ const path = require('path')
 
 module.exports = {
   // publicPath      : process.env.NODE_ENV === 'production' ? '/' : '/',
-  lintOnSave: false,
-  outputDir: path.resolve(__dirname, '../dist'),
+  // lintOnSave: false,
+  outputDir: path.resolve(__dirname, './dist'),
   css: { loaderOptions: { css: { url: false } } },
   devServer: {
     proxy: {

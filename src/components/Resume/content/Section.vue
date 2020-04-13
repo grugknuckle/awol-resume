@@ -34,8 +34,13 @@
 <script>
 export default {
   name      : 'ContentSection',
-  components: { },
-  props     : { title: { type: String, default: '' } },
+  components: {},
+  props     : {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
 }
 </script>
 
