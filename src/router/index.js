@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home.vue'
+import Author from '@/views/Author.vue'
 import Meta from 'vue-meta'
 
 Vue.use(Router)
@@ -18,7 +18,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { path: '/', name: 'home', component: Home },
+    { path: '/', name: 'author', component: Author },
     // { path: '/', name: 'Author', component: Author },
 		// { path: '/settings', name: 'Settings', component: Settings },
 		// { path: '/dashboard', name: 'Dashboard', component: Dashboard },

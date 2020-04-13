@@ -1,9 +1,11 @@
 <template>
-  <v-card color="grey lighten-4" light>
-    <v-card-text>
-      <content-section title="Who am I?">I'm a software developer, mathematician and father of two.</content-section>
+  <v-card :dark="!dark" :light="dark" class="ma-2" :color="bg(!dark)">
+    <v-card-text class="pa-1">
+      <content-section title="Who am I?" :dark="!dark">
+        I'm a software developer, mathematician and father of two.
+      </content-section>
 
-      <content-section v-if="prouds" title="What am I proud of?">
+      <content-section v-if="prouds" title="What am I proud of?" :dark="!dark">
         <v-layout v-for="(proud, i) in prouds" :key="i">
           <v-flex md1 xs3>
             <v-icon right>{{ proud.icon }}</v-icon>
@@ -18,7 +20,7 @@
         </v-layout>
       </content-section>
 
-      <content-section v-if="educations" title="Education">
+      <content-section v-if="educations" title="Education" :dark="!dark">
         <v-layout v-for="(education, i) in educations" :key="i">
           <v-flex md4>{{ education.from }} - {{ education.to }}</v-flex>
           <v-flex md8>
@@ -31,7 +33,7 @@
         </v-layout>
       </content-section>
 
-      <content-section v-if="skills" id="to-timeline" title="Skills">
+      <content-section v-if="skills" id="to-timeline" title="Skills" :dark="!dark">
         <template slot="actions">(% are relative not absolute)</template>
         <v-layout wrap>
           <template v-for="(skill, i) in skills">
@@ -39,12 +41,12 @@
             <v-flex v-else :key="i" md6 xs12>
               <div class="mr-2 ml-2">
                 <div class="align-center">
-                  <v-icon small>{{ skill.icon }}</v-icon>
+                  <v-icon>{{ skill.icon }}</v-icon>
                   {{ skill.title }}
                 </div>
                 <v-progress-linear
                   class="progress"
-                  color="secondary"
+                  color="primary"
                   height="3"
                   :value="skill.value"
                 />
@@ -58,80 +60,85 @@
 </template>
 
 <script>
-import ContentSection from "@/components/Resume/content/Section";
+import ContentSection from '@/components/Resume/content/Section'
+import { mdiHelpRhombusOutline, mdiLanguageJavascript, mdiNodejs, mdiVuejs, mdiShieldLock, mdiTestTube, mdiTruckFast, mdiGit, mdiAccountGroup } from '@mdi/js'
+
 export default {
-  name: "MainContent",
+  name: 'MainContent',
   components: { ContentSection },
   data: () => ({
     prouds: [
       {
-        icon: "mdi-help-rhombus-outline",
-        text: "Something interesting about me!",
-        source: "(it's not very interesting)"
+        icon: mdiHelpRhombusOutline,
+        text: 'Something interesting about me!',
+        source: '(it\'s not very interesting)'
       }
     ],
     educations: [
       {
-        from: "2007",
-        to: "2010",
-        title: "M.S., Mathematics",
-        location: "University of Massachusetts, Amherst",
-        description: ""
+        from: '2007',
+        to: '2010',
+        title: 'M.S., Mathematics',
+        location: 'University of Massachusetts, Amherst',
+        description: ''
       },
       {
-        from: "2003",
-        to: "2006",
-        title: "B.S., Mathematics",
-        location: "University of Massachusetts, Amherst",
-        description: ""
+        from: '2003',
+        to: '2006',
+        title: 'B.S., Mathematics',
+        location: 'University of Massachusetts, Amherst',
+        description: ''
       }
     ],
     skills: [
       {
-        title: "JavaScript",
-        icon: "mdi-language-javascript",
+        title: 'JavaScript',
+        icon: mdiLanguageJavascript,
         value: 90
       },
       {
-        title: "Node.js",
-        icon: "mdi-nodejs",
+        title: 'Node.js',
+        icon: mdiNodejs,
         value: 90
       },
       {
-        title: "Vue.js Framework",
-        icon: "mdi-vuejs",
+        title: 'Vue.js Framework',
+        icon: mdiVuejs,
         value: 75
       },
       { divider: true },
       {
-        title: "Web Application Security",
-        icon: "mdi-shield-lock",
+        title: 'Web Application Security',
+        icon: mdiShieldLock,
         value: 80
       },
       {
-        title: "Test Driven Development",
-        icon: "mdi-test-tube",
+        title: 'Test Driven Development',
+        icon: mdiTestTube,
         value: 26
       },
       {
-        title: "Continuous Integration / Continuous Delivery",
-        icon: "mdi-truck-fast",
+        title: 'Continuous Integration / Continuous Delivery',
+        icon: mdiTruckFast,
         value: 35
       },
       {
-        title: "Git",
-        icon: "mdi-git",
+        title: 'Git',
+        icon: mdiGit,
         value: 70
       },
       { divider: true },
       {
-        title: "Leadership",
-        icon: "mdi-account-group",
+        title: 'Leadership',
+        icon: mdiAccountGroup,
         value: 68
       }
     ]
-  })
-};
+  }),
+  props: {
+    dark: { type: Boolean, default: true }
+  }
+}
 </script>
 
 <style scoped>

@@ -1,15 +1,20 @@
 <template>
-	<v-card color="grey lighten-4" light mt-2>
+	<v-card :dark="dark" class="ma-2 pt-2" :color="bg(dark)">
 		<v-card-text>
-			<content-section id="timeline" title="Software Experience">
+			<content-section id="timeline" title="Software Experience" :dark="dark">
 				<template slot="actions">
 					<div>
 						<v-switch v-model="detailed" :label="detailed ? 'Detailed' : 'Summary'" />
 					</div>
 				</template>
 
-				<v-timeline dense>
-					<v-timeline-item v-for="(item, i) in orderedItems" :key="i" :icon="item.icon || ''" :class="{transparent: item.transparent}" large>
+				<v-timeline dense :dark="!dark">
+					
+					<v-timeline-item v-for="(item, i) in orderedItems" 
+													 :key="i" 
+													 :icon="item.icon || ''" 
+													 large 
+													 :fill-dot="true">
 						<template v-if="item.iconImage" v-slot:icon>
 							<v-avatar>
 								<img :src="publicPath(item.iconImage)" />
@@ -23,14 +28,14 @@
 								<span>{{ item.year }}</span>
 							</v-flex>
 							<v-flex md11 sm10 xs12>
-								<v-card class="elevation-1">
+								<v-card :light="dark" :dark="!dark" :color="bg((!dark))">
 									<v-card-title class="pb-0">
 										<div>
 											<p v-if="$vuetify.breakpoint.xsOnly">{{ item.year }}</p>
 											<h3>{{ item.title }}</h3>
 										</div>
 									</v-card-title>
-									<v-card-text>
+									<v-card-text light>
 										<v-layout wrap>
 											<v-flex :md7="!!item.image" :md12="!item.image" xs12>
 												<div class="mr-1">
@@ -66,7 +71,23 @@
 </template>
 
 <script>
-import ContentSection from '@/components/Resume/content/Section';
+import ContentSection from '@/components/Resume/content/Section'
+import {
+	mdiSchool,
+	mdiMicrosoftExcel,
+	mdiLanguageJavascript,
+	mdiLanguagePython,
+	mdiLanguageCsharp,
+	mdiNodejs,
+	mdiAngularjs,
+	mdiVuejs,
+	mdiSalesforce,
+	mdiLogin,
+	mdiPackageVariant,
+	mdiWeb,
+	mdiTransitConnectionVariant
+	} from '@mdi/js'
+
 export default {
 	name: 'Timeline',
 	components: { ContentSection },
@@ -75,7 +96,6 @@ export default {
 		items: [
 			{
 				detailed: true,
-				transparent: true,
 				year: 2007,
 				month: 9,
 				title: 'Graduate Teaching Assistant',
@@ -84,11 +104,10 @@ export default {
 						First real exposure to web development. Hand wrote static HTML pages for class websites.
 					</p>
 				`,
-				icon: 'mdi-school'
+				icon: mdiSchool
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2012,
 				month: 6,
 				title: 'Finished with Graduate School',
@@ -97,11 +116,10 @@ export default {
 						M.S. Mathematics - University of Massachusetts, Amherst
 					</p>
 				`,
-				icon: 'mdi-school'
+				icon: mdiSchool
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2012,
 				month: 11,
 				title: 'Built Spec Review',
@@ -110,11 +128,10 @@ export default {
 						Visual Basic for Applications, Excel, Word, AdobePDF
 					</p>
 				`,
-				icon: 'mdi-microsoft-excel'
+				icon: mdiMicrosoftExcel
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2013,
 				month: 12,
 				title: 'Javascript',
@@ -123,11 +140,10 @@ export default {
 						This was my first real exposure to javascript. I started with a basic Udemy course just to learn the syntax, and moved up to
 					</p>
 				`,
-				icon: 'mdi-language-javascript'
+				icon: mdiLanguageJavascript
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2014,
 				month: 1,
 				title: 'Python',
@@ -141,11 +157,10 @@ export default {
 						ipython notebook, IDLE, python 2.7, python 3.x
 					</p>
 				`,
-				icon: 'mdi-language-python'
+				icon: mdiLanguagePython
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2014,
 				month: 10,
 				title: 'C# MVC application',
@@ -154,11 +169,10 @@ export default {
 						First Attempt with C# .NET Model-View-Controller web application.
 					</p>
 				`,
-				icon: 'mdi-language-csharp'
+				icon: mdiLanguageCsharp
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2015,
 				month: 2,
 				title: 'REST API\'s with Node.js',
@@ -167,11 +181,10 @@ export default {
 						Node.js, Express.js, D3.js, crossfilter, DC.js, TopoJSON
 					</p>
 				`,
-				icon: 'mdi-nodejs'
+				icon: mdiNodejs
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2016,
 				month: 2,
 				title: 'Angular.js',
@@ -180,11 +193,10 @@ export default {
 						Dashboard apps, services.bete.us built with Angular.js.
 					</p>
 				`,
-				icon: 'mdi-angularjs'
+				icon: mdiAngularjs
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2017,
 				month: 4,
 				title: 'Vue.js',
@@ -199,11 +211,10 @@ export default {
 						Notable new additions to this application include the Employee Timepunch, Shop Hours Dashboard, Active Shipments Dashboard.
 					</p>
 				`,
-				icon: 'mdi-vuejs'
+				icon: mdiVuejs
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2017,
 				month: 11,
 				title: 'Salesforce Implementation',
@@ -212,11 +223,10 @@ export default {
 					
 					</p>
 				`,
-				icon: 'mdi-salesforce'
+				icon: mdiSalesforce
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2018,
 				month: 3,
 				title: 'Okta SSO implementation',
@@ -225,11 +235,10 @@ export default {
 						As recommended by our Salesforce sales representative.
 					</p>
 				`,
-				icon: 'mdi-login'
+				icon: mdiLogin
 			},
 			{
 				detailed: true,
-				transparent: true,
 				year: 2018,
 				month: 4,
 				title: 'Box Cloud Document Management',
@@ -238,13 +247,12 @@ export default {
 						As recommended by our Salesforce sales representative.
 					</p>
 				`,
-				icon: 'mdi-package-variant'
+				icon: mdiPackageVariant
 			},
 			{
 				detailed: true,
 				year: 2019,
 				month: 7,
-				transparent: true,
 				title: 'NetSuite ERP',
 				html: `
 					<p>
@@ -253,13 +261,12 @@ export default {
         `,
 				// image: "",
 				imageHeight: 200,
-				icon: 'mdi-web'
+				icon: mdiWeb
 			},
 			{
 				detailed: true,
 				year: 2020,
 				month: 2,
-				transparent: true,
 				title: 'Integrating NetSuite with legacy ERP system.',
 				html: `
 					<p>
@@ -271,10 +278,16 @@ export default {
         `,
 				// image: "",
 				imageHeight: 200,
-				icon: 'mdi-web'
+				icon: mdiTransitConnectionVariant
 			},
 		]
 	}),
+	props: {
+		dark: {
+			type: Boolean,
+			default: true
+		}
+	},
 	computed: {
 		orderedItems() {
 			const items = this.items.sort((a, b) => (b.year + b.month/12) - (a.year + a.month/12))
@@ -287,11 +300,11 @@ export default {
 			}
 		}
 	}
-};
+}
 </script>
 
 <style scoped>
-.title {
+/* .title {
 	border-bottom: 2px #bfbfbf solid;
 	line-height: 1.5 !important;
 }
@@ -300,5 +313,5 @@ export default {
 }
 .transparent {
 	opacity: 0.6;
-}
+} */
 </style>

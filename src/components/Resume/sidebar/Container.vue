@@ -1,5 +1,5 @@
 <template>
-  <v-card color="grey darken-3" dark ma-2>
+  <v-card :dark="dark" :light="!dark" class="ma-2 py-2" :color="bg(dark)">
     <v-card-text>
       <avatar />
       <div class="text-sm-center mb-4 mt-3">
@@ -29,6 +29,9 @@
 <script>
 import Avatar from '@/components/Resume/sidebar/Avatar'
 import SidebarSection from '@/components/Resume/sidebar/Section'
+import { mdiEmail, mdiWeb, mdiCakeVariant, mdiMapMarker } from '@mdi/js'
+import { mdiGithub, mdiLinkedin, mdiTwitter, mdiFacebook } from '@mdi/js'
+import { mdiBullseye, mdiBiohazard, mdiAutoFix, mdiKarate, mdiAccountGroup, mdiBookOpenPageVariant, mdiAndroidDebugBridge } from '@mdi/js'
 
 export default {
   name: 'Sidebar',
@@ -44,22 +47,22 @@ export default {
           items: [
             {
               name: 'Email',
-              icon: 'mdi-email',
+              icon: mdiEmail,
               text: 'aaron.wolbach@gmail.com'
             },
             {
               name: 'Website',
-              icon: 'mdi-web',
+              icon: mdiWeb,
               text: 'goingawol.com'
             },
             {
               name: 'Birth Date',
-              icon: 'mdi-cake-variant',
+              icon: mdiCakeVariant,
               text: 'Dec 12, 1972'
             },
             {
               name: 'Home',
-              icon: 'mdi-map-marker',
+              icon: mdiMapMarker,
               text: 'Turners Falls, MA'
             }
           ]
@@ -68,22 +71,22 @@ export default {
           title: 'SOCIALS',
           items: [
             {
-              icon: 'md-github',
+              icon: mdiGithub,
               text: 'github.com/grugknuckle',
               link: 'https://github.com/grugknuckle'
             },
             {
-              icon: 'mdi-linkedin',
+              icon: mdiLinkedin,
               text: 'linkedin.com/in/aaron-wolbach',
               link: 'https://www.linkedin.com/in/aaron-wolbach-883827179/'
             },
             {
-              icon: 'mdi-twitter',
+              icon: mdiTwitter,
               text: 'twitter.com/AaronWolbach',
               link: 'https://twitter.com/AaronWolbach'
             },
             {
-              icon: 'mdi-facebook',
+              icon: mdiFacebook,
               text: 'facebook.com/aaron.wolbach',
               link: 'https://www.facebook.com/aaron.wolbach'
             }
@@ -93,43 +96,41 @@ export default {
           title: 'HOBBIES',
           items: [
             {
-              icon: 'mdi-bullseye',
+              icon: mdiBullseye,
               text: 'Getting out of Safe Zone'
             },
             {
-              icon: 'mdi-biohazard',
+              icon: mdiBiohazard,
               text: 'Challenges'
             },
             {
-              icon: 'mdi-auto-fix',
+              icon: mdiAutoFix,
               text: 'Hacking Stuffs'
             },
             {
-              icon: 'mdi-karate',
+              icon: mdiKarate,
               text: 'Jiu Jitsu'
             },
             {
-              icon: 'mdi-account-group',
+              icon: mdiAccountGroup,
               text: 'Parenthood'
             },
             {
-              icon: 'mdi-book-open-page-variant',
+              icon: mdiBookOpenPageVariant,
               text: 'Books'
             },
             {
-              icon: 'mdi-android-debug-bridge',
+              icon: mdiAndroidDebugBridge,
               text: 'Squashing Bugs!'
             }
           ]
         }
       }
     }
+  },
+  props: {
+    dark: { type: Boolean, default: true }
   }
 }
 </script>
 
-<style scoped>
-.sidebar {
-  background: rgb(45, 42, 61);
-}
-</style>

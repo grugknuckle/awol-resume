@@ -1,7 +1,9 @@
 <template>
   <v-layout>
     <v-flex v-if="hasIcon" xs2>
-      <v-icon>{{ item.icon }}</v-icon>
+      <v-chip :light="dark" :dark="!dark" color="primary">
+        <v-icon>{{ item.icon }}</v-icon>
+      </v-chip>
     </v-flex>
     <v-flex :xs10="hasIcon" :xs12="!hasIcon">
       <div>{{ item.name }}</div>

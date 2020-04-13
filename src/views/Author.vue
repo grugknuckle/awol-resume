@@ -3,23 +3,24 @@
     <github-ribbon :url="github"/>
     
     <v-layout align-center justify-center>
+      
       <v-flex md10 sm12>
+        <v-parallax :src="parallax" height="100%" class="my-2">
+          <v-layout wrap>
+            <v-flex md4>
+              <sidebar-container :dark="dark" />
+            </v-flex>
+            <v-flex md8>
+              <content-container :dark="dark" />  <!-- class="fill-height" -->
+            </v-flex>
+          </v-layout>
 
-        <v-layout wrap>
-          <v-flex md4>
-            <sidebar-container class="fill-height" />
-          </v-flex>
-          <v-flex md8>
-            <content-container class="fill-height" />
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex md12>
-            <timeline-primary />
-          </v-flex>
-        </v-layout>
-
+          <v-layout>
+            <v-flex md12>
+              <timeline-primary :dark="dark" />
+            </v-flex>
+          </v-layout>
+        </v-parallax>
       </v-flex>
     </v-layout>
 
@@ -42,8 +43,10 @@ export default {
 	},
 	data() {
 		return {
-			github: 'https://github.com/grugknuckle'
+      github: 'https://github.com/grugknuckle',
+      dark: true,
+      parallax: require('./../assets/img/light-background.jpg')
 		}
-	}
+  }
 }
 </script>

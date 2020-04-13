@@ -1,8 +1,5 @@
 <template>
-  <v-card
-    v-if="true"
-    flat
-  >
+  <v-card v-if="true" flat :dark="dark" :color="bg(dark)">
     <v-card-title>
       <h3 class="title font-weight-light mb-1">
         {{ title }}
@@ -14,10 +11,7 @@
       <slot />
     </v-card-text>
   </v-card>
-  <div
-    v-else
-    class="mb-5"
-  >
+  <div v-else class="mb-5">
     <div class="title mb-3">
       <h2>
         {{ title }}
@@ -34,13 +28,16 @@
 <script>
 export default {
   name      : 'ContentSection',
-  components: {},
   props     : {
     title: {
       type: String,
       default: ''
+    },
+    dark: {
+      type: Boolean,
+      default: true
     }
-  },
+  }
 }
 </script>
 

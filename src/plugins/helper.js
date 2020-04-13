@@ -8,8 +8,15 @@ const mixin = {
      */
     publicPath (path) {
       return process.env.BASE_URL + path.replace(/^\/+/g, '')
+    },
+    bg(dark) {
+      if (dark) {
+        return this.$vuetify.theme.themes['dark'].surface
+      } else {
+        return this.$vuetify.theme.themes['light'].background
+      }
     }
-  },
+  }
 }
 
 export default {

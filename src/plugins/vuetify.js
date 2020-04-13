@@ -1,4 +1,3 @@
-import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure you are using css-loader
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import colors from 'vuetify/lib/util/colors'
@@ -7,20 +6,33 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   theme: {
-    dark: true,
+    dark: false,
     themes: {
       dark: {
-        primary: colors.grey.darken4,
+        background: colors.grey.darken5,
+        surface: colors.grey.darken3,
+        primary: colors.blue.lighten3,
         secondary: colors.blueGrey.darken2,
         info: colors.blueGrey.lighten3,
         accent: colors.cyan.accent4,
         success: colors.green.darken1,
         warning: colors.yellow.lighten4,
         error: colors.red.lighten4,
-      }
+      },
+      light: {
+        background: colors.grey.lighten5,
+        surface: colors.grey.lighten4,
+        // primary: colors.red.darken1, // #E53935
+        // secondary: colors.red.lighten4, // #FFCDD2
+        // accent: colors.indigo.base,
+        // info: colors.blueGrey.lighten3,
+        // success: colors.green.lighten1,
+        // warning: colors.yellow,
+        // error: colors.red.darken3,
+      },
     }
   },
   icons: {
-    iconfont: 'md',
+    iconfont: 'mdiSvg'
   },
 })
