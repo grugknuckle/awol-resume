@@ -139,6 +139,14 @@ export default {
     dark: { type: Boolean, default: true }
   }
 }
+
+/*
+  TODO: add tabs. 
+    - Experience, Education, References
+    - put some chips with the highlights
+      Javascript, ES6, Node.js, C#, Python, VBA, HTML, CSS3, SASS, SQL, MongoDB
+      AWS, Heroku, REST, GraphQL, git, Vue.js
+*/
 </script>
 
 <style scoped>
@@ -150,3 +158,5 @@ export default {
   margin-top: 0.1rem;
 }
 </style>
+
+

@@ -101,7 +101,10 @@ export default {
 				title: 'Graduate Teaching Assistant',
 				html: `
 					<p>
-						First real exposure to web development. Hand wrote static HTML pages for class websites.
+						While I was in graduate school I had my first real exposure to building websites. I 
+						static HTML to make very basic websites for the classes I was teaching at the time.
+						Looking back now, the pages I build were all very rudimentary and I didn't do anything
+						with the servers. But it was a good introduction.
 					</p>
 				`,
 				icon: mdiSchool
@@ -113,6 +116,10 @@ export default {
 				title: 'Finished with Graduate School',
 				html: `
 					<p>
+						In 2012, it was time to move on and I sought employment outside of Academia. I took
+						the Masters degree I had earned and went looking for a real job.
+					</p>
+					<p>
 						M.S. Mathematics - University of Massachusetts, Amherst
 					</p>
 				`,
@@ -122,10 +129,33 @@ export default {
 				detailed: true,
 				year: 2012,
 				month: 11,
-				title: 'Built Spec Review',
+				title: 'Learning Microsoft VBA',
 				html: `
 					<p>
-						Visual Basic for Applications, Excel, Word, AdobePDF
+						I admit it. I learned to code with Microsoft Visual Basic for Applications. One of the first tasks
+						I was assigned at <a href="https://www.bete.com/">BETE Spray Nozzles</a> was to make reviews of
+						customer supplied engineering documents.
+					<p>
+					</p>
+						As part of BETE's request for proposal process, the customers would supply the Engineering team with a
+						set of technical specifications for the custom solution BETE would provide to them. My job was to read
+						these documents and parse out special technical requirements the engineers needed to be aware of while
+						designing the solution. Also important was to note any of the customer's requirements that BETE was unable
+						or unwilling to provide. All of these technical notes were to be entered by hand into an elaborate
+						spreadsheet, only to later be extracted - again by hand - into a collection of word documents which would
+						be used to communicate with the customers.
+					</p>
+					<p>
+						After tiring of the clerical nature of moving text back and forth between documents, I developed a
+						collection of VBA macros to move the text for me. Eventually, the collection of macros turned into
+						a large application which sorted and filtered engineering requirements from technical exceptions, 
+						and generated professional PDF documents onto letterhead for customers to review. The company relies
+						on the operation of this spreadsheet to keep track of engineering requirements until the present day.
+					</p>
+					<p>
+						This was my first attempt at building really large application and I learned a lot of things. Most
+						importantly, I learned that VBA isn't a good platform for applications of this type. But everyone
+						has to start somewhere.
 					</p>
 				`,
 				icon: mdiMicrosoftExcel
@@ -133,23 +163,14 @@ export default {
 			{
 				detailed: true,
 				year: 2013,
-				month: 12,
-				title: 'Javascript',
-				html: `
-					<p>
-						This was my first real exposure to javascript. I started with a basic Udemy course just to learn the syntax, and moved up to
-					</p>
-				`,
-				icon: mdiLanguageJavascript
-			},
-			{
-				detailed: true,
-				year: 2014,
 				month: 1,
 				title: 'Python',
+				// describe the 
 				html: `
 					<p>
-
+						Eventually, I was tasked with generating some graphics to display spray testing data. And
+						while the data was given to me in spreadsheet form. The graphics package provided by MS Excel
+						was deemed to be insufficient for the task.
 					</p>
 					<p>
 						As I became more interested in processing data sets for work, I began to dip my toe into python.
@@ -159,11 +180,25 @@ export default {
 				`,
 				icon: mdiLanguagePython
 			},
+			// 	{
+			// 	detailed: true,
+			// 	year: 2014,
+			// 	month: 12,
+			// 	title: 'Javascript',
+			// 	html: `
+			// 		<p>
+			// 			This was my first real exposure to javascript. I started with a basic Udemy course 
+			// 			just to learn the syntax, and moved up to
+			// 		</p>
+			// 	`,
+			// 	icon: mdiLanguageJavascript
+			// },
 			{
 				detailed: true,
 				year: 2014,
 				month: 10,
-				title: 'C# MVC application',
+				title: 'C# MVC application + Javascript',
+				// describe the first dashboarding application you built with PNEY
 				html: `
 					<p>
 						First Attempt with C# .NET Model-View-Controller web application.
@@ -273,7 +308,7 @@ export default {
 							Built <a target="_blank" href="https://github.com/grugknuckle/netsuite-integration">netsuiteintegration</a>
 					</p>
           <p>
-							This work is currently ongoing. Phase one of go-live is scheduled for the 1 June 2020.
+							This work is currently ongoing. Phase one of go-live is scheduled for the 5th October 2020.
 					</p>    
         `,
 				// image: "",
