@@ -2,10 +2,10 @@
 	<div>
 		<v-app-bar app clipped-left dense dark>
 
-			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 			
-      <v-toolbar-title>
-				<v-img :src="logo" contain max-height="30"></v-img>
+      <v-toolbar-title class="float-left">
+				<v-img :src="logo" contain max-height="50"></v-img>
 			</v-toolbar-title>
 
 			<v-spacer></v-spacer>
@@ -13,7 +13,7 @@
 			<v-toolbar-items></v-toolbar-items>
 		</v-app-bar>
 
-		<!-- <v-navigation-drawer v-model="drawer" app floating clipped dark mini-variant>
+		<v-navigation-drawer v-model="drawer" app floating :clipped="true" dark :mini-variant="miniVariant">
 			<v-list dense nav>
 				<v-list-item v-for="item in routes" :key="item.title" :to="item.to">
 					<v-list-item-icon>
@@ -26,18 +26,22 @@
 				</v-list-item>
 
 			</v-list>
-		</v-navigation-drawer> -->
+		</v-navigation-drawer>
 	</div>
 </template>
 
 <script>
+import { mdiAccount, mdiHome } from '@mdi/js'
+
 export default {
 	data: () => ({
 		drawer: true,
+		miniVariant: false,
 		routes: [
-			{ title: 'Home', icon: 'mdi-home', to: '/' }
+			{ title: 'Author', icon: mdiAccount, to: '/' },
+			{ title: 'Home', icon: mdiHome, to: '/' }
 		],
-		logo: require('../assets/logo-2.png')
+		logo: require('../assets/Grugknuckle-Logo-dark.svg')
 	}),
 	methods: {}
 }
