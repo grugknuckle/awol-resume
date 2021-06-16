@@ -22,7 +22,8 @@ export default {
     item: {
       type: Object,
       default: () => {}
-    }
+    },
+    dark: { type: Boolean, default: () => true }
   },
   computed: {
     hasIcon() {
