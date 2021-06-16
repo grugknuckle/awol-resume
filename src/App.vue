@@ -2,11 +2,7 @@
 	<v-app id="app" dark>
 		<navigation></navigation>
 		
-		<particles-bg :type="type" 
-									:canvas="canvas"
-									:num="num"
-									:bg="true"
-		/>
+		<particles-bg :type="type" :canvas="canvas" :num="num" :bg="true" />
 
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-content>		
@@ -38,7 +34,7 @@ export default {
 		return {
 				type: 'cobweb',
 				canvas: { backgroundColor: '#B4B4B4', zIndex: 'auto' },	// '#888' '#365CCA'
-				num: 500,
+				num: 350,
 				// color: [ '#000' ],
 				zIndex: 'auto'
 		}
