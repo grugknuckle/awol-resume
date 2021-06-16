@@ -132,15 +132,16 @@ export default {
 				title: 'Learning Microsoft VBA',
 				html: `
 					<p>
-						I admit it. I learned to code with Microsoft Visual Basic for Applications. One of the first tasks
-						I was assigned at <a href="https://www.bete.com/">BETE Spray Nozzles</a> was to make reviews of
-						customer supplied engineering documents.
+						Ok, I admit it. I learned to code with Microsoft Visual Basic for Applications. Here's the short
+						story of how I took my first steps from mathematician to coder by starting with Excel macros.
 					<p>
 					</p>
-						As part of BETE's request for proposal process, the customers would supply the Engineering team with a
-						set of technical specifications for the custom solution BETE would provide to them. My job was to read
-						these documents and parse out special technical requirements the engineers needed to be aware of while
-						designing the solution. Also important was to note any of the customer's requirements that BETE was unable
+						One of the first tasks I was assigned at <a href="https://www.bete.com/">BETE Spray Nozzles</a> 
+						was to make reviews of customer supplied engineering documents. As part of BETE's request for proposal 
+						process, the customers would supply the Engineering team with a set of technical specifications 
+						for the custom solution BETE would provide to them. My job was to read these documents and parse
+						out special technical requirements the engineers needed to be aware of while designing the 
+						solution. Also important was to note any of the customer's requirements that BETE was unable
 						or unwilling to provide. All of these technical notes were to be entered by hand into an elaborate
 						spreadsheet, only to later be extracted - again by hand - into a collection of word documents which would
 						be used to communicate with the customers.
@@ -169,13 +170,20 @@ export default {
 				html: `
 					<p>
 						Eventually, I was tasked with generating some graphics to display spray testing data. And
-						while the data was given to me in spreadsheet form. The graphics package provided by MS Excel
-						was deemed to be insufficient for the task.
+						while the data was given to me in spreadsheet form, the graphics package provided by MS Excel
+						was deemed to be insufficient for the task. I took a short Udemy course on Python, downloaded
+						ipython notebook, IDLE, python 2.7, python 3.x and set to work learning how to make graphs.
 					</p>
 					<p>
-						As I became more interested in processing data sets for work, I began to dip my toe into python.
-						In these days, the tools available to python developers weren't as good as they are not.
-						ipython notebook, IDLE, python 2.7, python 3.x
+						The goal of this project was to produce estimated performance curves for a new nozzle based upon
+						some test data that had been collected. The catch was that the collected data was taken at the 
+						extreme values of the spray nozzle's performance range. Yet the requirement was to produce estimates
+						of the nozzle's performance when an unknown pump was being used. The estimated performance had
+						to be interpolated from known performance and provided to the customer graphically. The customer would
+						provide to us a pump curve - which described the pump pressure as a function of flow rate - which 
+						would supply fluid to the nozzle and fluid parameters like the density and viscosity. The program
+						would take the imput curves and crunch the numbers against the known performance of the nozzle and
+						output a 3d plot describing the spray angle
 					</p>
 				`,
 				icon: mdiLanguagePython
