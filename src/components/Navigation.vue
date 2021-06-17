@@ -10,7 +10,14 @@
 
 			<v-spacer></v-spacer>
 
-			<v-toolbar-items></v-toolbar-items>
+			<!-- <v-toolbar-items>
+				<v-avatar color="primary" v-if="$auth.isAuthenticated">
+					<img :src="$auth.user.picture" :alt="$auth.user.name">
+				</v-avatar>
+				<v-avatar color="primary" size="48" v-else>
+					<v-icon x-large>{{ avatar }}</v-icon>
+				</v-avatar>
+			</v-toolbar-items> -->
 		</v-app-bar>
 
 		<v-navigation-drawer v-model="drawer" app floating :clipped="true" dark :mini-variant="miniVariant">
@@ -41,13 +48,20 @@
 </template>
 
 <script>
-import { mdiAccount, mdiHome, mdiCogOutline, mdiMonitorDashboard, mdiLogoutVariant, mdiLoginVariant } from '@mdi/js'
+import {
+	mdiAccount,
+	mdiHome,
+	mdiCogOutline,
+	mdiMonitorDashboard,
+	mdiLogoutVariant,
+	mdiLoginVariant,
+	mdiAccountCircle
+} from '@mdi/js'
 
 export default {
 	data: () => ({
 		drawer: true,
 		miniVariant: false,
-		isLoggedin: false,
 		logo: require('../assets/Grugknuckle-Logo-dark.svg')
 	}),
 	computed: {
@@ -61,24 +75,26 @@ export default {
 		},
 		signInOut() {
 			return {
-				icon: this.isLoggedin ? mdiLogoutVariant : mdiLoginVariant,
-				title: this.isLoggedin ? 'Log Out' : 'Log In',
+				icon: this.$auth.isAuthenticated ? mdiLogoutVariant : mdiLoginVariant,
+				title: this.$auth.isAuthenticated ? 'Log Out' : 'Log In',
 			}
 		},
-		// isLoggedin() {
-		// 	return false
-		// }
+		avatar() {
+			return mdiAccountCircle
+		}
 	},
 	methods: {
-		async authenticate() {
-			if (this.isLoggedin) {
-				console.log('should logout')
-				// await this.$auth.logout()
+		// https://auth0.com/blog/complete-guide-to-vue-user-authentication/#Add-User-Authentication
+		authenticate() {
+			console.log(process.env)
+			if (this.$auth.isAuthenticated) {
+				// https://auth0.github.io/auth0-spa-js/interfaces/logoutoptions.html
+				this.$auth.logout()
+        this.$router.push({ path: '/' })
 			} else {
-				console.log('should login')
-				// await this.$auth.login()
+				// https://auth0.github.io/auth0-spa-js/interfaces/redirectloginoptions.html
+				this.$auth.loginWithRedirect() 
 			}
-			this.isLoggedin = !this.isLoggedin
 		}
 	}
 }
