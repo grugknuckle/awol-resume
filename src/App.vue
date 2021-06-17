@@ -5,9 +5,9 @@
 		<matrix-rain ref="matrix" :fontSize="10" :background="true" :interval="100"></matrix-rain>
 
 		<v-fade-transition mode="out-in" duration type="animation">
-			<v-content>		
+			<v-main>		
         <router-view @canvasResize="resizeCanvas"></router-view>
-			</v-content>
+			</v-main>
 		</v-fade-transition>
 		
 		<v-footer app>
