@@ -60,7 +60,7 @@ import {
 
 export default {
 	data: () => ({
-		drawer: true,
+		drawer: false,
 		miniVariant: false,
 		logo: require('../assets/Grugknuckle-Logo-dark.svg')
 	}),
