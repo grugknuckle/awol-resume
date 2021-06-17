@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Author from '@/views/Author.vue'
+import { authenticationGuard } from "@/auth/authenticationGuard";
 import Meta from 'vue-meta'
+
+import Author from '@/views/Author.vue'
+import Settings from '@/views/Settings.vue'
+import Dashboard from '@/views/Dashboard.vue'
 
 Vue.use(Router)
 Vue.use(Meta, {
@@ -19,9 +23,8 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     { path: '/', name: 'author', component: Author },
-    // { path: '/', name: 'Author', component: Author },
-		// { path: '/settings', name: 'Settings', component: Settings },
-		// { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+		{ path: '/settings', name: 'Settings', component: Settings, beforeEnter: authenticationGuard },
+		{ path: '/dashboard', name: 'Dashboard', component: Dashboard, beforeEnter: authenticationGuard },
   ]
 })
 

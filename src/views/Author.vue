@@ -47,6 +47,18 @@ export default {
       dark: true,
       parallax: require('./../assets/img/light-background.jpg')
 		}
-  }
+  },
+  // mounted() {
+  //   this.$emit('canvasResize', {})
+  // },
+  // watch:{
+  //   '$route': {
+  //     handler() {
+  //       this.$emit('canvasResize', {})
+  //     },
+  //     immediate: true,
+  //     deep: true 
+  //   }
+  // }
 }
 </script>

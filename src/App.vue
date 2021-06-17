@@ -2,11 +2,11 @@
 	<v-app id="app" dark>
 		<navigation></navigation>
 		
-		<matrix-rain :fontSize="10" :background="true"></matrix-rain>
+		<matrix-rain ref="matrix" :fontSize="10" :background="true" :interval="100"></matrix-rain>
 
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-content>		
-        <router-view></router-view>
+        <router-view @canvasResize="resizeCanvas"></router-view>
 			</v-content>
 		</v-fade-transition>
 		
@@ -32,6 +32,11 @@ export default {
 	},
 	data() {
 		return {}
+	},
+	methods: {
+		resizeCanvas(data) {
+			this.$refs.matrix.reset()
+		}
 	}
 }
 </script>
