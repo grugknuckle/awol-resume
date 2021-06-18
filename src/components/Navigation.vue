@@ -2,7 +2,7 @@
 	<div>
 		<v-app-bar app clipped-left dense dark>
 
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+			<v-app-bar-nav-icon @click.stop="toggleDrawer()"></v-app-bar-nav-icon>
 			
       <v-toolbar-title class="float-left">
 				<v-img :src="logo" contain max-height="50"></v-img>
@@ -84,17 +84,18 @@ export default {
 		}
 	},
 	methods: {
+		toggleDrawer() {
+			this.drawer = !this.drawer
+		},
 		// https://auth0.com/blog/complete-guide-to-vue-user-authentication/#Add-User-Authentication
 		authenticate() {
-			console.log(process.env)
-			console.log(this.$auth)
 			if (this.$auth.isAuthenticated) {
 				// https://auth0.github.io/auth0-spa-js/interfaces/logoutoptions.html
 				this.$auth.logout()
         this.$router.push({ path: '/' })
 			} else {
 				// https://auth0.github.io/auth0-spa-js/interfaces/redirectloginoptions.html
-				this.$auth.loginWithRedirect() 
+				this.$auth.loginWithRedirect()
 			}
 		}
 	}

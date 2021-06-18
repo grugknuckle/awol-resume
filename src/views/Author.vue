@@ -1,4 +1,5 @@
 <template>
+  
   <v-container fluid>
     <github-ribbon :url="github"/>
     
@@ -25,6 +26,7 @@
     </v-layout>
 
   </v-container>
+
 </template>
 
 <script>
