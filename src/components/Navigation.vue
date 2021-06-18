@@ -2,7 +2,7 @@
 	<div>
 		<v-app-bar app clipped-left dense dark>
 
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+			<v-app-bar-nav-icon @click.stop="toggleDrawer()"></v-app-bar-nav-icon>
 			
       <v-toolbar-title class="float-left">
 				<v-img :src="logo" contain max-height="50"></v-img>
@@ -10,14 +10,14 @@
 
 			<v-spacer></v-spacer>
 
-			<!-- <v-toolbar-items>
+			<v-toolbar-items>
 				<v-avatar color="primary" v-if="$auth.isAuthenticated">
 					<img :src="$auth.user.picture" :alt="$auth.user.name">
 				</v-avatar>
 				<v-avatar color="primary" size="48" v-else>
 					<v-icon x-large>{{ avatar }}</v-icon>
 				</v-avatar>
-			</v-toolbar-items> -->
+			</v-toolbar-items>
 		</v-app-bar>
 
 		<v-navigation-drawer v-model="drawer" app floating :clipped="true" dark :mini-variant="miniVariant">
@@ -71,7 +71,7 @@ export default {
 				{ title: 'Setttings', icon: mdiCogOutline , to: '/settings', auth: true },
 				{ title: 'Dashboard', icon: mdiMonitorDashboard , to: '/dashboard', auth: true },
 			]
-			return this.isLoggedin ? routes : routes.filter(x => !x.auth)
+			return this.$auth.isAuthenticated ? routes : routes.filter(x => !x.auth)
 		},
 		signInOut() {
 			return {
@@ -84,16 +84,18 @@ export default {
 		}
 	},
 	methods: {
+		toggleDrawer() {
+			this.drawer = !this.drawer
+		},
 		// https://auth0.com/blog/complete-guide-to-vue-user-authentication/#Add-User-Authentication
 		authenticate() {
-			console.log(process.env)
 			if (this.$auth.isAuthenticated) {
 				// https://auth0.github.io/auth0-spa-js/interfaces/logoutoptions.html
 				this.$auth.logout()
         this.$router.push({ path: '/' })
 			} else {
 				// https://auth0.github.io/auth0-spa-js/interfaces/redirectloginoptions.html
-				this.$auth.loginWithRedirect() 
+				this.$auth.loginWithRedirect()
 			}
 		}
 	}
