@@ -11,7 +11,7 @@ Vue.use(helpers)
 Vue.use(Auth0Plugin, {
   domain: process.env.VUE_APP_AUTH0_DOMAIN,
   clientId: process.env.VUE_APP_AUTH0_CLIENT_ID,
-  audience: process.env.VUE_APP_AUTH0_AUDIENCE,
+  // audience: process.env.VUE_APP_AUTH0_AUDIENCE,
   onRedirectCallback: (appState) => {
     router.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname)
   }
