@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.15.0",
     "@mdi/js": "^5.0.45",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "serve-static": "^1.14.1",
     "vue": "^2.6.11",
