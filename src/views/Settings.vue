@@ -15,15 +15,8 @@ export default {
   data() {
     return {}
   },
-  // watch:{
-  //   '$route': {
-  //     handler() {
-  //       console.log('Route event')
-  //       this.$emit('canvasResize', {})
-  //     },
-  //     immediate: true,
-  //     deep: true 
-  //   }
-  // }
+  mounted() {
+    this.$emit('canvasResize', {})
+  }
 }
 </script>

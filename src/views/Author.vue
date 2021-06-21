@@ -50,9 +50,9 @@ export default {
       parallax: require('./../assets/img/light-background.jpg')
 		}
   },
-  // mounted() {
-  //   this.$emit('canvasResize', {})
-  // },
+  mounted() {
+    this.$emit('canvasResize', {})
+  }
   // watch:{
   //   '$route': {
   //     handler() {
