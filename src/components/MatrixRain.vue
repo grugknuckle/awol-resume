@@ -15,6 +15,9 @@ export default {
     return {
       charset: 'ABCDEFGHIJKLMNOPQRSTUVXYZ!@#$%^&*?1234567890ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ーヽヾヿ',
       droplets: [],
+      height: document.body.scrollHeight,
+      width: window.innerWidth,
+      pages: Math.ceil(document.body.scrollHeight / window.innerHeight),
       styleObject: {
         width: '100%',
         height: '100%',
@@ -31,19 +34,6 @@ export default {
     },
     context() {
       return this.$refs.canvas.getContext('2d')
-    },
-    height() {
-      const body = document.body
-      const html = document.documentElement
-
-      let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
-      return height
-    },
-    width() {
-      return window.innerWidth
-    },
-    pages() {
-      return Math.ceil(this.height / window.innerHeight)
     },
     letters() {
       return this.charset.split('')
@@ -63,10 +53,15 @@ export default {
       this.initDrops()
     },
     resize() {
-      const width = this.canvas.clientWidth
-      const height = this.height // this.canvas.clientHeight
-      this.canvas.width = width
-      this.canvas.height = height
+      const body = document.body
+      const html = document.documentElement
+
+      this.height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
+      this.width = this.canvas.clientWidth
+      this.pages = Math.ceil(this.height / window.innerHeight)
+
+      this.canvas.width = this.width
+      this.canvas.height = this.height
     },
     initDrops() {
       const columns = this.width / this.fontSize
@@ -74,7 +69,7 @@ export default {
       this.droplets = []
       for (let i = 0; i < columns; i++) {
         const x = i * this.fontSize
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < this.pages + 1; j++) {
           const y = (Math.floor(Math.random() * pageHeight)) * this.fontSize
           this.droplets.push({ x, y })
         }
