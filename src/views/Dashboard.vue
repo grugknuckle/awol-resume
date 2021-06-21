@@ -3,7 +3,7 @@
     <v-layout align-center justify-center>
       
       <v-flex md10 sm12>
-        
+        <quote></quote>
       </v-flex>
 
     </v-layout>
@@ -11,18 +11,18 @@
 </template>
 
 <script>
+import Quote from './../components/Quote'
+
 export default {
+  name: 'Dashboard',
+  components: {
+    Quote
+  },
   data() {
     return {}
   },
-  // watch:{
-  //   '$route': {
-  //     handler() {
-  //       this.$emit('canvasResize', {})
-  //     },
-  //     immediate: true,
-  //     deep: true 
-  //   }
-  // }
+  async mounted() {
+    this.$emit('canvasResize', {})
+  }
 }
 </script>
