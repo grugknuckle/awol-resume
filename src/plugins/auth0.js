@@ -2,31 +2,31 @@
  *  External Modules
  */
 
- import Vue from "vue"
- import createAuth0Client from "@auth0/auth0-spa-js"
+import Vue from "vue"
+import createAuth0Client from "@auth0/auth0-spa-js"
  
 
  /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname)
-const DEFAULT_REDIRECT_URI = window.location.origin
+const DEFAULT_REDIRECT_URI = process.env.VUE_APP_DOMAIN
 
  /**
   *  Vue Instance Definition
   */
  
- let instance
+let instance
  
- export const getInstance = () => instance
+export const getInstance = () => instance
  
  /**
   *  Vue Instance Initialization
   */
  
- export const useAuth0 = ({
+export const useAuth0 = ({
    onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-   redirectUri = window.location.origin,
+   redirectUri = DEFAULT_REDIRECT_URI,
    ...pluginOptions
- }) => {
+}) => {
   if (instance) return instance
  
   instance = new Vue({
@@ -84,18 +84,19 @@ const DEFAULT_REDIRECT_URI = window.location.origin
          this.user = await this.auth0Client.getUser()
          this.isLoading = false
        }
-     },
-   })
+    },
+  })
  
-   return instance
- }
+  return instance
+}
  
  /**
   *  Vue Plugin Definition
   */
  
- export const Auth0Plugin = {
-   install(Vue, options) {
-     Vue.prototype.$auth = useAuth0(options)
-   },
- }
+export const Auth0Plugin = {
+  install(Vue, options) {
+    Vue.prototype.$auth = useAuth0(options)
+  },
+}
+ 
