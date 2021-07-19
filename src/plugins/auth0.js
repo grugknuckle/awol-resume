@@ -10,17 +10,9 @@ import createAuth0Client from "@auth0/auth0-spa-js"
 const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname)
 const DEFAULT_REDIRECT_URI = process.env.VUE_APP_DOMAIN
 
- /**
-  *  Vue Instance Definition
-  */
- 
 let instance
  
 export const getInstance = () => instance
- 
- /**
-  *  Vue Instance Initialization
-  */
  
 export const useAuth0 = ({
    onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
@@ -31,15 +23,30 @@ export const useAuth0 = ({
  
   instance = new Vue({
     data() {
-       return {
-         auth0Client: null,
-         isLoading: true,
-         isAuthenticated: false,
-         user: {},
-         error: null,
-       }
+      return {
+        isLoading: true,
+        isAuthenticated: false,
+        user: {},
+        auth0Client: null,
+        error: null,
+      }
     },
     methods: {
+      async loginWithPopup(options, config) {
+        this.popupOpen = true
+
+        try {
+          await this.auth0Client.loginWithPopup(options, config)
+          this.user = await this.auth0Client.getUser()
+          this.isAuthenticated = await this.auth0Client.isAuthenticated()
+          this.error = null
+        } catch (e) {
+          console.error(e)
+          this.error = e
+        } finally {
+          this.popupOpen = false
+        }
+      },
       async handleRedirectCallback() {
         this.isLoading = true
         try {
@@ -55,12 +62,18 @@ export const useAuth0 = ({
       loginWithRedirect(options) {
         return this.auth0Client.loginWithRedirect(options)
       },
+      getIdTokenClaims(options) {
+        return this.auth0Client.getIdTokenClaims(options)
+      },
+      getTokenSilently(options) {
+        return this.auth0Client.getTokenSilently(options)
+      },
+      getTokenWithPopup(options) {
+        return this.auth0Client.getTokenWithPopup(options)
+      },
       logout(options) {
         return this.auth0Client.logout(options)
-      },
-      getTokenSilently(o) {
-        return this.auth0Client.getTokenSilently(o)
-      },
+      }
     },
     async created() {
       this.auth0Client = await createAuth0Client({
