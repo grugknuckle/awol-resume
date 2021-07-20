@@ -44,7 +44,7 @@ export default {
   async beforeMount() {
     try {
       const accesstoken  = await this.$auth.getTokenSilently()
-      console.log(accesstoken)
+
       const request = {
         method: 'GET',
         baseURL: 'https://api-quotations.herokuapp.com',
