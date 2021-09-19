@@ -6,6 +6,7 @@ import Meta from 'vue-meta'
 import Author from '@/views/Author.vue'
 import Settings from '@/views/Settings.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import Profile from '@/views/Profile.vue'
 
 Vue.use(Router)
 Vue.use(Meta, {
@@ -25,6 +26,7 @@ const router = new Router({
     { path: '/', name: 'author', component: Author },
 		{ path: '/settings', name: 'Settings', component: Settings, beforeEnter: authenticationGuard },
 		{ path: '/dashboard', name: 'Dashboard', component: Dashboard, beforeEnter: authenticationGuard },
+		{ path: '/profile', name: 'User Profile', component: Profile, beforeEnter: authenticationGuard },
   ]
 })
 
