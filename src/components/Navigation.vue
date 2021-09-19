@@ -95,7 +95,8 @@ export default {
         this.$router.push({ path: '/' })
 			} else {
 				// https://auth0.github.io/auth0-spa-js/interfaces/redirectloginoptions.html
-				this.$auth.loginWithRedirect({ scope: 'openid profile email read:quotes read:authors' })
+				const scope = 'openid profile email read:quotes read:authors'
+				this.$auth.loginWithRedirect({ scope })
 			}
 		}
 	}

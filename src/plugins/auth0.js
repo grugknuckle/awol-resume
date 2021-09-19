@@ -17,7 +17,7 @@ export const getInstance = () => instance
 export const useAuth0 = ({
    onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
    redirectUri = DEFAULT_REDIRECT_URI,
-   ...pluginOptions
+   ...options
 }) => {
   if (instance) return instance
  
@@ -59,37 +59,53 @@ export const useAuth0 = ({
           this.isLoading = false
         }
       },
-      loginWithRedirect(options) {
+      loginWithRedirect(opts) {
+        // always ensure that openid, profile and email are requested scopes.
+        const scopes = ['openid', 'profile', 'email'] 
+        let options = {}
+
+        if (typeof opts != 'object') {
+          options.scope = scopes.join(' ')
+        } else {
+          const scope = scopes
+            .concat(opts.hasOwnProperty('scope') ? opts.scope.split(' ') : [])
+            .filter((v,i,A) => A.indexOf(v) == i)
+            .join(' ')
+          options = Object.assign(opts, { scope })
+        }
+        console.log(options)
         return this.auth0Client.loginWithRedirect(options)
       },
-      getIdTokenClaims(options) {
-        return this.auth0Client.getIdTokenClaims(options)
+      getIdTokenClaims(opts) {
+        return this.auth0Client.getIdTokenClaims(opts)
       },
-      getTokenSilently(options) {
-        return this.auth0Client.getTokenSilently(options)
+      getTokenSilently(opts) {
+        return this.auth0Client.getTokenSilently(opts)
       },
-      getTokenWithPopup(options) {
-        return this.auth0Client.getTokenWithPopup(options)
+      getTokenWithPopup(opts) {
+        return this.auth0Client.getTokenWithPopup(opts)
       },
-      logout(options) {
+      logout(opts) {
+        const options = Object.assign(typeof opts == 'object' ? opts : {}, { returnTo: process.env.VUE_APP_AUTH0_LOGOUTURL })
         return this.auth0Client.logout(options)
       }
     },
     async created() {
       this.auth0Client = await createAuth0Client({
-        ...pluginOptions,
-        domain: pluginOptions.domain,
-        client_id: pluginOptions.clientId,
-        audience: pluginOptions.audience,
+        ...options,
+        client_id: options.clientId,
         redirect_uri: redirectUri,
       })
  
        try {
-         if (window.location.search.includes("code=") && window.location.search.includes("state=")) {
-           const { appState } = await this.auth0Client.handleRedirectCallback()
- 
-           onRedirectCallback(appState)
-         }
+        if (
+          window.location.search.includes('code=') &&
+          window.location.search.includes('state=')
+        ) {
+          const { appState } = await this.auth0Client.handleRedirectCallback()
+          this.error = null
+          onRedirectCallback(appState)
+        }
        } catch (error) {
          this.error = error
        } finally {
@@ -102,10 +118,6 @@ export const useAuth0 = ({
  
   return instance
 }
- 
- /**
-  *  Vue Plugin Definition
-  */
  
 export const Auth0Plugin = {
   install(Vue, options) {

@@ -4,14 +4,6 @@ import { getInstance } from '@/plugins/auth0'
 export const authenticationGuard = (to, from, next) => {
   const authService = getInstance()
 
-  const guardAction = () => {
-    if (authService.isAuthenticated) {
-      return next()
-    }
-
-    authService.loginWithRedirect({ appState: { targetUrl: to.fullPath } });
-  };
-
   // If the Auth0Plugin has loaded already, check the authentication state
   if (!authService.isLoading) {
     return guardAction()
@@ -22,4 +14,19 @@ export const authenticationGuard = (to, from, next) => {
       return guardAction()
     }
   })
+
+  function guardAction() {
+    if (authService.isAuthenticated) {
+      return next()
+    }
+  
+    const options = {
+      appState: {
+        targetUrl: to.fullPath
+      }
+    }
+    authService.loginWithRedirect(options);
+  }
 }
+
+
