@@ -44,19 +44,18 @@ export default {
   async beforeMount() {
     try {
       const accesstoken  = await this.$auth.getTokenSilently()
-
       const request = {
         method: 'GET',
-        baseURL: 'https://api-quotations.herokuapp.com',
+        baseURL: process.env.VUE_APP_API_HOST,
         url: '/api/v1/quotes?populate=T&limit=100',
-        headers: { 'Authorization': `Bearer ${accesstoken}` }
+        headers: {
+          'Authorization': `Bearer ${accesstoken}`,
+          Accept: 'application/json'  
+        }
       }
-      const quotes = await axios(request).then(response => response.data.data.docs)
-
+      const response = await axios(request)
+      const quotes = response.data.data.docs
       let idx = Math.floor(Math.random() * quotes.length)
-      
-      console.log(quotes[idx])
-      
       this.quote = quotes[idx]
     } catch (error) {
       console.log('An error occured while accessing quotations api.')
