@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-5">
+  <v-card elevation="2" outlined shaped class="ma-3 pa-3">
     <v-row>
       <v-col cols="4">
         <v-img :src="quote.author.imageURL" height="250" class="ma-2"></v-img>
@@ -42,24 +42,31 @@ export default {
     }
   },
   async beforeMount() {
-    try {
-      const accesstoken  = await this.$auth.getTokenSilently()
-      const request = {
-        method: 'GET',
-        baseURL: process.env.VUE_APP_API_HOST,
-        url: '/api/v1/quotes?populate=T&limit=100',
-        headers: {
-          'Authorization': `Bearer ${accesstoken}`,
-          Accept: 'application/json'  
+    const quotes = await this.fetchQuotes()
+    let idx = Math.floor(Math.random() * quotes.length)
+    this.quote = quotes[idx]
+  },
+  methods: {
+    async fetchQuotes() {
+      try {
+        const accesstoken  = await this.$auth.getTokenSilently()
+        const request = {
+          method: 'GET',
+          baseURL: process.env.VUE_APP_API_HOST,
+          url: '/api/v1/quotes?populate=T&limit=100',
+          headers: {
+            'Authorization': `Bearer ${accesstoken}`,
+            Accept: 'application/json'  
+          }
         }
+        const response = await axios(request)
+        const quotes = response.data.data.docs
+        return quotes
+      } catch (error) {
+        console.log('An error occured while accessing quotations api.')
+        console.error(error)
+        return []
       }
-      const response = await axios(request)
-      const quotes = response.data.data.docs
-      let idx = Math.floor(Math.random() * quotes.length)
-      this.quote = quotes[idx]
-    } catch (error) {
-      console.log('An error occured while accessing quotations api.')
-      console.error(error)
     }
   }
 }
