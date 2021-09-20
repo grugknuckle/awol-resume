@@ -21,28 +21,25 @@
           </v-col>
         </v-row>
         
-        <v-card-title>Order History</v-card-title>
+        <v-card-title>Identity Token</v-card-title>
         <v-divider></v-divider>
 
+        <highlightjs autodetect :code="JSON.stringify($auth.user, null, 2)" class="rounded w-100" />
 
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" outlined @click="showJSON = !showJSON">
-            {{ showJSON ? 'Hide JSON' : 'Show JSON' }}
+          <v-btn color="blue darken-1" outlined @click="showToken = !showToken">
+            {{ showToken ? 'Hide Token' : 'Show Token' }}
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
 
-    <v-col cols="7" v-if="showJSON">
+    <v-col cols="7" v-if="showToken">
       <v-card elevation="2" outlined shaped class="ma-3 pa-3">
-        <v-card-title>Identity Token</v-card-title>
-        <pre>
-          <code>
-            {{ JSON.stringify($auth.user, null, 2).trim() }}
-          </code>
-        </pre>
+        <v-card-title>Access Token</v-card-title>
+        <highlightjs autodetect :code="JSON.stringify(accessToken, null, 2)" class="rounded w-100" />
       </v-card>
     </v-col>
   </v-row>
@@ -57,24 +54,21 @@ export default {
   },
   data() {
     return {
-      showJSON: true,
+      showToken: true,
       user: {},
-      headers: [
-        {
-          text: 'Timestamp', align: 'start', sortable: true, value: 'date'
-        }, // date
-        {
-          text: 'Item', value: 'item'
-        }, // pizza
-        {
-          text: '', value: 'price'
-        }  // price
-      ],
-
+      accessToken: {}
     }
   },
-  beforeMount() {
+  async beforeMount() {
     this.user = this.$auth.user
+    const accesstoken  = await this.$auth.getTokenSilently()
+    this.accessToken = parseJwt(accesstoken)
+        
+    function parseJwt(token) {
+      const base64Payload = token.split('.')[1]
+      const payload = Buffer.from(base64Payload, 'base64')
+      return JSON.parse(payload.toString())
+    }
   }
 }
 </script>

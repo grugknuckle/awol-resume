@@ -55,7 +55,8 @@ import {
 	mdiMonitorDashboard,
 	mdiLogoutVariant,
 	mdiLoginVariant,
-	mdiAccountCircle
+	mdiAccountCircle, 
+	mdiInformationOutline 
 } from '@mdi/js'
 
 export default {
@@ -67,7 +68,8 @@ export default {
 	computed: {
 		routes() {
 			let routes = [
-				{ title: 'About', icon: mdiAccount, to: '/', auth: false },
+				{ title: 'About', icon: mdiInformationOutline , to: '/', auth: false },
+				{ title: 'Profile', icon: mdiAccountCircle , to: '/profile', auth: true },
 				{ title: 'Setttings', icon: mdiCogOutline , to: '/settings', auth: true },
 				{ title: 'Dashboard', icon: mdiMonitorDashboard , to: '/dashboard', auth: true },
 			]
@@ -88,15 +90,15 @@ export default {
 			this.drawer = !this.drawer
 		},
 		// https://auth0.com/blog/complete-guide-to-vue-user-authentication/#Add-User-Authentication
-		authenticate() {
+		async authenticate() {
 			if (this.$auth.isAuthenticated) {
 				// https://auth0.github.io/auth0-spa-js/interfaces/logoutoptions.html
 				this.$auth.logout({ returnTo: process.env.VUE_APP_DOMAIN })
         this.$router.push({ path: '/' })
 			} else {
 				// https://auth0.github.io/auth0-spa-js/interfaces/redirectloginoptions.html
-				const scope = 'openid profile email read:quotes read:authors'
-				this.$auth.loginWithRedirect({ scope })
+				const scopes = [ 'openid', 'profile', 'email'	]
+				this.$auth.loginWithRedirect({ scope: scopes.join(' ') })
 			}
 		}
 	}
