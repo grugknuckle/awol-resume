@@ -85,7 +85,8 @@ import {
 	mdiLogin,
 	mdiPackageVariant,
 	mdiWeb,
-	mdiTransitConnectionVariant
+	mdiTransitConnectionVariant,
+	mdiShieldStar
 	} from '@mdi/js'
 
 export default {
@@ -322,6 +323,20 @@ export default {
 				// image: "",
 				imageHeight: 200,
 				icon: mdiTransitConnectionVariant
+			},
+			{
+				detailed: true,
+				year: 2021,
+				month: 7,
+				title: 'Solution Engineer - Auth0',
+				html: `
+					<p>
+							Started new position at <a target="_blank" href="https://auth0.com">Auth0</a>.
+					</p>
+        `,
+				// image: "",
+				imageHeight: 200,
+				icon: mdiShieldStar
 			},
 		]
 	}),
