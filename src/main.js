@@ -3,12 +3,18 @@ import App from '@/App.vue'
 import router from './router'
 // import store from './store'
 
+import hljs from 'highlight.js/lib/core'
+import 'highlight.js/styles/github.css'
+
+import Axios from './plugins/axios'
 import vuetify from '@/plugins/vuetify'
 import helpers from '@/plugins/helper'
 import { Auth0Plugin } from '@/plugins/auth0'
 
 Vue.use(helpers)
-
+// Vue.use(VueMeta)
+Vue.use(hljs.vuePlugin)
+Vue.use(Axios)
 Vue.use(Auth0Plugin, {
   domain: process.env.VUE_APP_AUTH0_DOMAIN,
   clientId: process.env.VUE_APP_AUTH0_CLIENT_ID,
