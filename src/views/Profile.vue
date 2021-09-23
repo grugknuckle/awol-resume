@@ -48,15 +48,11 @@
 </template>
 
 <script>
-import GithubRibbon from '@/components/Resume/GithubRibbon'
 
 export default {
   name: 'Profile',
   metaInfo: {
     title: 'Profile',
-  },
-  components: {
-		GithubRibbon,
   },
   data() {
     return {
@@ -75,9 +71,6 @@ export default {
       const payload = Buffer.from(base64Payload, 'base64')
       return JSON.parse(payload.toString())
     }
-  },
-  async mounted() {
-    this.$emit('canvasResize', {})
   }
 }
 </script>
