@@ -60,6 +60,7 @@ import {
 } from '@mdi/js'
 
 export default {
+	name: 'Navigation',
 	data: () => ({
 		drawer: true,
 		miniVariant: false,
