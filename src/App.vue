@@ -3,7 +3,7 @@
 		<navigation></navigation>
 		
 		<video-background :src="video.src" :poster="video.poster"></video-background>
-
+			
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-main>
 				
@@ -32,7 +32,7 @@
 <script>
 import Navigation from '@/components/Navigation'
 import VideoBackground from '@/components/VideoBackground'
-import GithubRibbon from '@/components/Resume/GithubRibbon'
+import GithubRibbon from '@/components/GithubRibbon'
 
 export default {
 	name: 'app',
