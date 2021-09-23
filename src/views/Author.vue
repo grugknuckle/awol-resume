@@ -8,6 +8,7 @@
       <v-flex md8>
         <content-container :dark="dark" />  <!-- class="fill-height" -->
       </v-flex>
+      
     </v-layout>
 
     <v-layout>
@@ -35,18 +36,6 @@ export default {
 		return {
       dark: true,
 		}
-  },
-  mounted() {
-    this.$emit('canvasResize', {})
   }
-  // watch:{
-  //   '$route': {
-  //     handler() {
-  //       this.$emit('canvasResize', {})
-  //     },
-  //     immediate: true,
-  //     deep: true 
-  //   }
-  // }
 }
 </script>

@@ -50,9 +50,6 @@ export default {
     const filter = this.filter
     this.quotes = await this.fetchQuotes(filter)
   },
-  async mounted() {
-    this.$emit('canvasResize', {})
-  },
   methods: {
     async fetchQuotes() {
       try {

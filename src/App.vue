@@ -2,7 +2,7 @@
 	<v-app id="app" dark>
 		<navigation></navigation>
 		
-		<matrix-rain ref="matrix" :fontSize="10" :background="true" :interval="100"></matrix-rain>
+		<video-background :src="video.src" :poster="video.poster"></video-background>
 
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-main>
@@ -13,7 +13,7 @@
 					<v-layout align-center justify-center>
 						<v-flex md10 sm12>
 							<v-parallax :src="parallax" height="100%" class="my-2">
-        				<router-view @canvasResize="resizeCanvas"></router-view>
+        						<router-view></router-view>
 							</v-parallax>
 						</v-flex>
 					</v-layout>
@@ -31,14 +31,14 @@
 
 <script>
 import Navigation from '@/components/Navigation'
-import MatrixRain from '@/components/MatrixRain'
+import VideoBackground from '@/components/VideoBackground'
 import GithubRibbon from '@/components/Resume/GithubRibbon'
 
 export default {
 	name: 'app',
 	components: {
 		Navigation,
-		MatrixRain,
+		VideoBackground,
 		GithubRibbon
 	},
 	metaInfo: {
@@ -49,11 +49,10 @@ export default {
 		return {
 			github: 'https://github.com/grugknuckle',
 			parallax: require('./assets/img/light-background.jpg'),
-		}
-	},
-	methods: {
-		resizeCanvas(data) {
-			this.$refs.matrix.reset()
+			video: {
+				src: 'matrix-rain.mp4',
+				poster: ''
+			}
 		}
 	}
 }
