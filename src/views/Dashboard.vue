@@ -20,9 +20,6 @@ export default {
   },
   data() {
     return {}
-  },
-  async mounted() {
-    this.$emit('canvasResize', {})
   }
 }
 </script>

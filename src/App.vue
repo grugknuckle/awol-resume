@@ -2,11 +2,12 @@
 	<v-app id="app" dark>
 		<navigation></navigation>
 		
-		<matrix-rain ref="matrix" :fontSize="10" :background="true" :interval="100"></matrix-rain>
+		<!-- <matrix-rain ref="matrix" :fontSize="10" :background="true" :interval="100"></matrix-rain> -->
+		<video-background></video-background>
 
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-main>		
-        <router-view @canvasResize="resizeCanvas"></router-view>
+        <router-view></router-view>
 			</v-main>
 		</v-fade-transition>
 		
@@ -18,13 +19,15 @@
 
 <script>
 import Navigation from '@/components/Navigation'
-import MatrixRain from '@/components/MatrixRain'
+// import MatrixRain from '@/components/MatrixRain'
+import VideoBackground from '@/components/VideoBackground'
 
 export default {
 	name: 'app',
 	components: {
 		Navigation,
-		MatrixRain
+		// MatrixRain,
+		VideoBackground
 	},
 	metaInfo: {
 		title: 'Home',
@@ -32,11 +35,6 @@ export default {
 	},
 	data() {
 		return {}
-	},
-	methods: {
-		resizeCanvas(data) {
-			this.$refs.matrix.reset()
-		}
 	}
 }
 </script>
