@@ -50,7 +50,7 @@ export default {
 			github: 'https://github.com/grugknuckle',
 			parallax: require('./assets/img/light-background.jpg'),
 			video: {
-				src: 'matrix-rain.mp4',
+				src: 'matrix-rain-fade-in-out.mp4',
 				poster: ''
 			}
 		}
