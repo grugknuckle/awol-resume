@@ -54,6 +54,9 @@ export default {
     async fetchQuotes() {
       try {
         const accesstoken  = await this.$auth.getTokenSilently()
+        if (process.env.VUE_APP_MODE === 'development') {
+          console.log(accesstoken)
+        }
         const request = {
           method: 'GET',
           baseURL: process.env.VUE_APP_API_HOST,
