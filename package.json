@@ -6,7 +6,8 @@
     "start": "node server.js",
     "dev": "vue-cli-service serve --mode development",
     "serve": "vue-cli-service serve --mode production",
-    "build": "vue-cli-service build --mode production"
+    "build": "vue-cli-service build --mode production",
+    "deploy": "git push heroku master --no-verify"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.15.0",
