@@ -2,7 +2,8 @@
 	<v-app id="app" dark>
 		<navigation></navigation>
 		
-		<video-background :src="video.src" :poster="video.poster"></video-background>
+		<!-- <video-background :src="video.src" :poster="video.poster"></video-background> -->
+		<youtube-background></youtube-background>
 			
 		<v-fade-transition mode="out-in" duration type="animation">
 			<v-main>
@@ -31,14 +32,14 @@
 
 <script>
 import Navigation from '@/components/Navigation'
-import VideoBackground from '@/components/VideoBackground'
+import YoutubeBackground from '@/components/YoutubeBackground'
 import GithubRibbon from '@/components/GithubRibbon'
 
 export default {
 	name: 'app',
 	components: {
 		Navigation,
-		VideoBackground,
+		YoutubeBackground,
 		GithubRibbon
 	},
 	metaInfo: {
