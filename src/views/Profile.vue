@@ -25,21 +25,41 @@
                 <v-card-title>Identity Token</v-card-title>
                 <v-divider></v-divider>
 
-                <highlightjs autodetect :code="JSON.stringify($auth.user, null, 2)" class="rounded w-100" />
+                <highlightjs
+                  autodetect 
+                  :code="JSON.stringify($auth.user, null, 2)" 
+                  class="rounded w-100" 
+                  v-if="showIDToken"
+                />
 
                 <v-divider></v-divider>
 
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" outlined @click="showToken = !showToken">
-                    {{ showToken ? 'Hide Token' : 'Show Token' }}
+                  <v-btn color="blue darken-1" outlined @click="showIDToken = !showIDToken">
+                    {{ showIDToken ? 'Hide Token' : 'Show Token' }}
                   </v-btn>
                 </v-card-actions>
               </v-card>
 
-              <v-card elevation="2" outlined shaped class="ma-3 pa-3" v-if="showToken">
+              <v-card elevation="2" outlined shaped class="ma-3 pa-3" >
                 <v-card-title>Access Token</v-card-title>
-                <highlightjs autodetect :code="JSON.stringify(accessToken, null, 2)" class="rounded w-100" />
+                <v-divider></v-divider>
+
+                <highlightjs 
+                  autodetect 
+                  :code="JSON.stringify(accessToken, null, 2)" 
+                  class="rounded w-100"
+                  v-if="showAccessToken"
+                />
+                
+                <v-divider></v-divider>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" outlined @click="showAccessToken = !showAccessToken">
+                    {{ showAccessToken ? 'Hide Token' : 'Show Token' }}
+                  </v-btn>
+                </v-card-actions>
               </v-card>
 
           </v-flex>
@@ -56,7 +76,8 @@ export default {
   },
   data() {
     return {
-      showToken: true,
+      showIDToken: true,
+      showAccessToken: true,
       user: {},
       accessToken: {}
     }
