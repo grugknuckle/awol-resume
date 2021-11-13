@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "vue-cli-service serve --mode development",
-    "serve": "vue-cli-service serve --mode production",
+    "local": "vue-cli-service serve --mode local",
+    "prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --mode production",
     "deploy": "git push heroku master --no-verify"
   },
