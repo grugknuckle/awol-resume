@@ -9,6 +9,9 @@ export default new Vuetify({
     dark: false,
     themes: {
       dark: {
+        options: {
+          customProperties: true
+        },
         background: colors.grey.darken5,
         surface: colors.grey.darken3,
         primary: colors.blue.lighten3,
@@ -20,6 +23,9 @@ export default new Vuetify({
         error: colors.red.lighten4,
       },
       light: {
+        options: {
+          customProperties: true
+        },
         background: colors.grey.lighten5,
         surface: colors.grey.lighten4,
         // primary: colors.red.darken1, // #E53935
