@@ -18,9 +18,8 @@
         <v-rating :value="quote.rating" color="amber" dense half-increments readonly size="14"></v-rating>
 
       </v-col>
+      
     </v-row>
-
-    
   </v-card>
 </template>
 

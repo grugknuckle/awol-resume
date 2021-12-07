@@ -4,7 +4,7 @@ import router from './router'
 // import store from './store'
 
 import hljs from 'highlight.js/lib/core'
-import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/dracula.css'
 
 import Axios from './plugins/axios'
 import vuetify from '@/plugins/vuetify'

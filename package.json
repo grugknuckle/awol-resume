@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "vue-cli-service serve --mode development",
-    "serve": "vue-cli-service serve --mode production",
+    "local": "vue-cli-service serve --mode local",
+    "prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --mode production",
     "deploy": "git push heroku master --no-verify"
   },
@@ -15,6 +16,7 @@
     "axios": "^0.21.2",
     "express": "^4.17.1",
     "highlight.js": "^10.4.1",
+    "moment": "^2.29.1",
     "serve-static": "^1.14.1",
     "vue": "^2.6.11",
     "vue-content-loading": "^1.6.0",
