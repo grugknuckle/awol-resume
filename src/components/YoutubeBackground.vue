@@ -5,11 +5,15 @@
 </template>
 
 <script>
+const hackerVids = {
+  'Matrix Rain': 'rpWrtXyEAN0',
+  'Blue Code Glitch': '5-JpEGxWvKU'
+}
 
 export default {
   name: 'YoutubeBackground',
   props: {
-    youtubeID: { type: String, default: 'rpWrtXyEAN0' }
+    youtubeID: { type: String, default: hackerVids['Matrix Rain'] }
   },
   data() {
     return {}
